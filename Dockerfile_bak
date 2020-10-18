@@ -1,0 +1,34 @@
+FROM openmrs/openmrs-reference-application-distro:demo
+
+RUN wget https://download-gcdn.ej-technologies.com/jprofiler/jprofiler_linux_11_1_4.tar.gz -P /tmp/ &&\
+tar -xzf /tmp/jprofiler_linux_11_1_4.tar.gz -C /usr/local && \
+rm /tmp/jprofiler_linux_11_1_4.tar.gz
+
+ENV JPAGENT_PATH="-agentpath:/usr/local/jprofiler11.1.4/bin/linux-x64/libjprofilerti.so=nowait"
+EXPOSE 8849
+
+#ENV CATALINA_OPTS="$CATALINA_OPTS -agentpath:/usr/local/jprofiler11.1.4/bin/linux-x64/libjprofilerti.so=port=8849"
+
+COPY setenv.sh /usr/local/tomcat/bin/
+
+#RUN ["sh", "-c", "/usr/local/tomcat/startup.sh"]
+
+#RUN ["/bin/bash", "/usr/local/jprofiler11.1.4/bin/jpenable", "-g", "-p 8849"]
+#RUN ["/bin/bash", "-c", "/usr/local/jprofiler11.1.4/bin/jpenable -g -p 8849"]
+#RUN ["/usr/local/jprofiler11.1.4/bin/jpenable", "--gui", "--port=8849"]
+#ENTRYPOINT ["/usr/local/jprofiler11.1.4/bin/jpenable", "--gui", "--port=8849"]
+#ENTRYPOINT bash -c /usr/local/jprofiler11.1.4/bin/jpenable --gui --port=8849
+
+#CMD ["/usr/local/tomcat/startup.sh", "/usr/local/jprofiler11.1.4/bin/jpenable -g -p 8849"]
+CMD ["/usr/local/tomcat/startup.sh"]
+
+#ADD start.sh /
+#ADD start_jp_agent.sh /
+#RUN chmod +x /start.sh
+#RUN chmod +x /start_jp_agent.sh
+#CMD ["/start.sh"]
+
+
+
+
+
