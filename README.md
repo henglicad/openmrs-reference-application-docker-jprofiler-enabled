@@ -18,6 +18,8 @@ $ OPENMRS_VERSION=2.5 docker-compose up
 ```
 If you don't add a _OPENMRS_VERSION_ variable, it will use `demo` docker tag.
 
+Note: This last command will build/load two images running in two containers, one for OpenMRS and the other for MySQL. The OpenMRS image (with Jprofler agent) is newly built based on an official iamge, while the MySQL image was direclty loaded from an offical image. If you make changes to the OpenMRS image (e.g., changing the JProfiler agent version), you need to remove the old image and rerun the command `OPENMRS_VERSION=2.5 docker-compose up'.
+
 Application will be eventually accessible on http://localhost:8080/openmrs.
 Credentials on shipped demo data:
   - Username: admin
