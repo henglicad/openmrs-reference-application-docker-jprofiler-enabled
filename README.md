@@ -30,7 +30,7 @@ left overs volumes and data when doing changes to the docker configuration and i
 $ docker-compose down -v
 ```
 
-## Attach JProfiler GUI to the OpenMRS Docker container
+## Attach JProfiler GUI to the Docker container JVM
 Setup your JProfiler GUI to attach to the JVM running in the Docker container, in the same way as attaching to a remote server. If your JProfiler GUI and the container are running on the same machine, use the localhost IP (127.0.0.1) and port 8849.
 
 ## Generate demo data / database from scratch
